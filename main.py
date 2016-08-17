@@ -14,12 +14,12 @@ from urllib import request
 #         print(k, v)
 #     xml = data.decode('utf-8')
 
-import xml.etree.ElementTree
-xml = xml.etree.ElementTree.parse('a.xml')
-movies = xml.getiterator('item')
-print(len(movies))
-for movie in movies:
-    pass
+
+# import xml.etree.ElementTree
+# xml = xml.etree.ElementTree.parse('a.xml')
+# movies = xml.getiterator('item')
+# print(len(movies))
+# for movie in movies:
     # print(movie.find('title').text)
     # print('link: '+movie.find('link').text)
     # print('author: '+movie.find('author').text)

@@ -1,3 +1,5 @@
 /.idea
 .env
 torrent.db
+helper/__pycache__/
+a.xml
