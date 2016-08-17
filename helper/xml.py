@@ -34,5 +34,6 @@ def execute():
         if db.has(title):
             continue
         else:
+            print('a new %s torrent: %s'% (section, title))
             db.insert(title, link, section, enclosure)
             download(enclosure, title)
