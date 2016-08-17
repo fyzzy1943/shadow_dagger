@@ -9,18 +9,18 @@ def init():
     conn = sqlite3.connect(db_file)
     cursor=conn.cursor()
     cursor.execute(
-        r'CREATE TABLE sky(title VARCHAR(255),link VARCHAR(255),author VARCHAR(255),category VARCHAR(255),enclosure VARCHAR(255),date VARCHAR(255))')
+        r'CREATE TABLE torrent(title VARCHAR(255),link VARCHAR(255),section VARCHAR(255),enclosure VARCHAR(255))')
     cursor.close()
     conn.commit()
     conn.close()
 
     print('init successful, db file at', db_file)
 
-def insert(title, link, author, category, enclosure, date):
+def insert(title, link, section, enclosure):
     conn = sqlite3.connect(db_file)
     cursor = conn.cursor()
     cursor.execute(
-        r'INSERT INTO sky VALUES (?,?,?,?,?,?)', (title, link, author, category, enclosure, date))
+        r'INSERT INTO torrent VALUES (?,?,?,?)', (title, link, section, enclosure))
     row = cursor.rowcount
     cursor.close()
     conn.commit()
@@ -34,7 +34,7 @@ def has(title):
 
     conn = sqlite3.connect(db_file)
     cursor = conn.cursor()
-    cursor.execute(r'SELECT rowid FROM sky WHERE title=?', (title,))
+    cursor.execute(r'SELECT rowid FROM torrent WHERE title=?', (title,))
     value = cursor.fetchall()
     cursor.close()
     conn.close()
@@ -47,7 +47,7 @@ def has(title):
 def getID(title):
     conn = sqlite3.connect(db_file)
     cursor = conn.cursor()
-    cursor.execute(r'SELECT rowid FROM sky WHERE title=?', (title,))
+    cursor.execute(r'SELECT rowid FROM torrent WHERE title=?', (title,))
     value = cursor.fetchall()
     cursor.close()
     conn.close()
