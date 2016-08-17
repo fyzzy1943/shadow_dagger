@@ -8,7 +8,7 @@ import helper.xml as x
 db.init()
 
 while True:
-    print('mission start.')
+    print('mission start. as %s'% time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
     x.section = 'hdsky'
     x.build()
     x.execute()
