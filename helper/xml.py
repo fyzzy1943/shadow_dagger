@@ -1,4 +1,4 @@
-import urllib.request, os
+import urllib.request, os, time
 import helper.sqlite as db
 
 from helper.getConfig import config
@@ -14,9 +14,8 @@ def build():
         if f.status!=200:
             print('wrong code:', f.status)
 
-        file = open('torrent.xml', 'w', encoding='utf-8')
-        file.write(data.decode('utf-8'))
-        file.close()
+        with open('torrent.xml', 'w', encoding='utf-8') as file:
+            file.write(data.decode('utf-8'))
 
 def download(url, title):
     t_name = config(section, 'name')+'_'+str(db.getID(title))+'.torrent'
@@ -35,5 +34,7 @@ def execute():
             continue
         else:
             print('a new %s torrent: %s'% (section, title))
+            with open('torrent.log', 'a') as file:
+                file.write('a new %s torrent: %s @ %s'% (section, title, time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
             db.insert(title, link, section, enclosure)
             download(enclosure, title)

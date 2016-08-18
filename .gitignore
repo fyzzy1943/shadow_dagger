@@ -3,3 +3,6 @@
 torrent.db
 torrent.xml
 helper/__pycache__/
+
+mission.log
+torrent.log
