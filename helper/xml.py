@@ -35,6 +35,6 @@ def execute():
         else:
             print('a new %s torrent: %s'% (section, title))
             with open('torrent.log', 'a') as file:
-                file.write('a new %s torrent: %s @ %s'% (section, title, time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
+                file.write('a new %s torrent: %s @ %s\n'% (section, title, time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
             db.insert(title, link, section, enclosure)
             download(enclosure, title)

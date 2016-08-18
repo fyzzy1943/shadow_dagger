@@ -19,6 +19,6 @@ while True:
 
     print('mission complete. sleep 5min.')
     with open('mission.log', 'a') as file:
-        file.write('mission complete. @ %s'% time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+        file.write('mission complete. @ %s\n'% time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
     time.sleep(60*5)
 os.system('pause')
