@@ -8,3 +8,9 @@ def config(section, option, default=None):
         return c[section][option]
     else:
         return default
+
+def allSection():
+    c = configparser.ConfigParser()
+    c.read('.env')
+
+    return c.sections()
